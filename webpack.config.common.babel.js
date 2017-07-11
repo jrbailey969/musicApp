@@ -12,16 +12,16 @@ module.exports = new WebpackConfig().merge({
   },
   context:  path.join(__dirname,'/app'),
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        loader: 'eslint-loader',
-        exclude: /(node_modules)/
-      }
-    ],
+    // preLoaders: [
+    //   {
+    //     test: /\.js$/,
+    //     loader: 'eslint-loader',
+    //     exclude: /(node_modules)/
+    //   }
+    // ],
     loaders: [{
         test: /\.scss$/,
-        loader: 'style!css?sourceMap!sass?sourceMap&sourceComments'
+        loader: 'style-loader!css-loader?sourceMap!sass-loader?sourceMap&sourceComments'
     }, {
         test: /\.(eot|woff|woff2|ttf|png|svg|jpg)$/,
         loader: 'url-loader?limit=300'
@@ -30,10 +30,10 @@ module.exports = new WebpackConfig().merge({
         loader: 'json-loader'
     }, {
         test: /\.html$/,
-        loader: 'ng-cache?prefix=[dir]/[dir]'
+        loader: 'ng-cache-loader?prefix=[dir]/[dir]'
     }, {
         test: /\.js$/,
-        loader: 'babel?presets[]=es2015',
+        loader: 'babel-loader?presets[]=es2015',
         exclude: /node_modules/
     }]
   },
