@@ -4,6 +4,7 @@ import routing from './artist.route';
 import artistListComponent from './artist-list/artist-list.component';
 import artistFormComponent from './artist-form/artist-form.component';
 import { ArtistService } from './shared/artist.service';
+import './artist-form/artist-form.component.scss';
 
 angular
   .module('artist', [uirouter])

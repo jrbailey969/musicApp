@@ -1,9 +1,23 @@
-<form>
-    <div>Id: {{$ctrl.artist.id}}</div>
-    <div>Name: <input ng-model="$ctrl.artist.name"></div>
-    <div>
-        <button ng-click="$ctrl.save()">Save</button>
-        <button ui-sref="artists">Cancel</button>
-        <button ng-if="!$ctrl.isNew()" ng-click="$ctrl.delete()">Delete</button>
+<div class=" artist-form panel panel-default">
+  <form class="panel-body">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Id</label>
+      <div class="col-sm-2">
+        <input class="form-control" disabled ng-model="$ctrl.artist.id">
+      </div>
     </div>
-</form>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input class="form-control" ng-model="$ctrl.artist.name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-default" ng-click="$ctrl.save()">Save</button>
+        <button class="btn" ui-sref="artists">Cancel</button>
+        <button class="btn" ng-if="!$ctrl.isNew()" ng-click="$ctrl.delete()">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>

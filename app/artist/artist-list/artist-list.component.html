@@ -1,9 +1,21 @@
-Artist List:
-<ul>
-    <li ng-repeat="artist in $ctrl.artists">
-        <a ui-sref="artists.artist({id: artist.id})">{{artist.id}} {{artist.name}}</a>
-    </li>
-</ul>
-<button ui-sref="artists.addArtist">Add Artist</button>
-<ui-view></ui-view>
+<h4>Artist List</h4>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="list-group">
+                <a 
+                    class="list-group-item list-group-item-action" 
+                    ng-repeat="artist in $ctrl.artists"
+                    ui-sref="artists.artist({id: artist.id})"
+                    ui-sref-active="active">
+                    {{artist.id}} {{artist.name}}
+                </a>
+            </div>
+            <button class="btn btn-default" ui-sref="artists.addArtist">Add Artist</button>
+        </div>
+        <div class="col-sm-8">
+            <ui-view></ui-view>
+        </div>
+    </div>
+</div>
 
