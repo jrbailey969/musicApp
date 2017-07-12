@@ -13,6 +13,7 @@ describe('Service: ExampleService', function() {
       }); 
     });
 
+
   beforeEach(inject(function(_exampleService_) {
     exampleService = _exampleService_;
   }));

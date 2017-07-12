@@ -1,0 +1,9 @@
+Artist List:
+<ul>
+    <li ng-repeat="artist in $ctrl.artists">
+        <a ui-sref="artists.artist({id: artist.id})">{{artist.id}} {{artist.name}}</a>
+    </li>
+</ul>
+<button ui-sref="artists.addArtist">Add Artist</button>
+<ui-view></ui-view>
+

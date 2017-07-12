@@ -1,7 +1,7 @@
 function exampleRoutes($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.when('', '/example');
-  $urlRouterProvider.when('/', '/example');
+  // $urlRouterProvider.when('', '/example');
+  // $urlRouterProvider.when('/', '/example');
 
   $stateProvider
     .state('example', {

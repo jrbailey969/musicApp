@@ -1,0 +1,9 @@
+<form>
+    <div>Id: {{$ctrl.artist.id}}</div>
+    <div>Name: <input ng-model="$ctrl.artist.name"></div>
+    <div>
+        <button ng-click="$ctrl.save()">Save</button>
+        <button ui-sref="artists">Cancel</button>
+        <button ng-if="!$ctrl.isNew()" ng-click="$ctrl.delete()">Delete</button>
+    </div>
+</form>
