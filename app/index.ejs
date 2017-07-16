@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="app">
   <head>
+    <base href="/"> 
     <meta charset="utf-8">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <meta name="description" content="">
@@ -12,7 +13,7 @@
   </head>
   <body> <!-- ng-strict-di -->
     <div class="container">
-      <div class="header clearfix">
+      <div class="header clearfix" ng-controller="homeCtrl">
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
@@ -24,6 +25,8 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
+            <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>
+            <li><a class="btn btn-link" ng-hide="userInfo.isAuthenticated" ng-click="login()">Login</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">Music Classification</h3>
@@ -31,6 +34,9 @@
       <div id="app-wrapper" ui-view></div>
     </div>
   </body>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.14/js/adal.min.js"></script>
+  <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.14/js/adal-angular.min.js"></script>
   <script type="text/javascript">
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {

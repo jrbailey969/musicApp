@@ -48,14 +48,15 @@ module.exports = new WebpackConfig().merge({
         jQuery: "jquery"
     }),
     new HtmlWebpackPlugin({
-      title: 'Starter Theme',
+      title: 'Music App',
       template: 'index.ejs',
       inject: 'body'
     }),
     new CopyWebpackPlugin([
       {from: 'offline.html', to: 'offline.html'},
       {from: 'service-worker.js', to: 'service-worker.js'},
-      {from: 'manifest.json', to: 'manifest.json'}
+      {from: 'manifest.json', to: 'manifest.json'},
+      {from: 'web.config', to: 'web.config'},
     ])
   ]
 })

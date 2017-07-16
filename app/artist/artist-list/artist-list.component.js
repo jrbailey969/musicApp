@@ -4,7 +4,9 @@ let artistListComponent = {
   template: artistListHtml,
   controller: function(artistService) {
     const vm = this;
-    vm.artists = artistService.getList();
+    artistService.getList().then((result) => {
+      vm.artists = result;
+    });
   }
 }
 

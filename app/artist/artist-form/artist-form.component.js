@@ -15,22 +15,31 @@ let artistFormComponent = {
     }
 
     vm.$onChanges = function (changesObj) {
-        vm.artist = artistService.getById(vm.artistId);
+        if (vm.artistId) {
+            artistService.getById(vm.artistId).then((result) => {
+                vm.artist = result;
+            });
+        }
     }
 
     vm.save = function() {
+        let promise;
         if (vm.isNew()) {
-            vm.artist = artistService.add(vm.artist);
+            promise = artistService.add(vm.artist);
         }
         else {
-            artistService.update(vm.artist);
+            promise = artistService.update(vm.artist);
         }
-        $state.go('^', null, { reload: true});
+
+        promise.then(() => {
+            $state.go('^', null, { reload: true});
+        });
     }
 
     vm.delete = function() {
-        artistService.delete(vm.artist);
-        $state.go('^', null, { reload: true});
+        artistService.delete(vm.artist).then(() => {
+            $state.go('^', null, { reload: true});
+        });
     }
 
     vm.isNew = function () {

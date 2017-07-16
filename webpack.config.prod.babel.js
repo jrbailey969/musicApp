@@ -18,6 +18,10 @@ module.exports = new WebpackConfig().extend('./webpack.config.common.babel.js').
     new webpack.optimize.UglifyJsPlugin({
         sourceMap: false,
         mangle: false
+    }),
+    new webpack.DefinePlugin({
+      API_BASE_URL: JSON.stringify("https://musicappapi20170705.azurewebsites.net")
     })
+
   ]
 })
