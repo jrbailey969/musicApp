@@ -1,0 +1,67 @@
+<div class=" category-form panel panel-default">
+  <form class="panel-body">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Id</label>
+      <div class="col-sm-5">
+        <input class="form-control" disabled ng-model="$ctrl.category.id">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input class="form-control" ng-model="$ctrl.category.name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Type</label>
+      <div class="col-sm-10">
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary" ng-repeat="categoryType in $ctrl.categoryTypeInfo.types" ng-class="{ active: categoryType.id === $ctrl.category.classificationCategoryTypeId }">
+            <input 
+              type="radio" 
+              ng-model="$ctrl.category.classificationCategoryTypeId" 
+              name="classificationCategoryType" 
+              ng-value="categoryType.id" > 
+                {{categoryType.name}}
+          </label>
+        </div>    
+      </div>
+    </div>
+    {{$ctrl.category.classificationCategoryTypeId}}
+    <div class="form-group row" ng-if="$ctrl.category.classificationCategoryTypeId === $ctrl.categoryTypeInfo.TAG">
+      <label class="col-sm-2 col-form-label">Tags</label>
+      <div class="col-sm-10">
+        <button class="btn btn-primary" ng-repeat="tag in $ctrl.category.tags">
+            {{tag.name}}
+        </button>
+      </div>
+    </div>
+    <div class="form-group row" ng-if="$ctrl.category.classificationCategoryTypeId === $ctrl.categoryTypeInfo.TAG">
+      <div class="col-sm-offset-2 col-sm-8">
+        <input class="form-control" ng-model="$ctrl.newTagName">
+      </div>
+      <div class="col-sm-2">
+        <button class="btn" ng-click="$ctrl.addNewTag($ctrl.newTagName)">Add</button>        
+      </div>
+    </div>
+    <div class="form-group row" ng-if="$ctrl.category.classificationCategoryTypeId === $ctrl.categoryTypeInfo.RANGE">
+      <label class="col-sm-2 col-form-label">Range Minimum</label>
+      <div class="col-sm-2">
+        <input class="form-control" ng-model="$ctrl.category.rangeMin">
+      </div>
+    </div>
+    <div class="form-group row" ng-if="$ctrl.category.classificationCategoryTypeId === $ctrl.categoryTypeInfo.RANGE">
+      <label class="col-sm-2 col-form-label">Range Maximum</label>
+      <div class="col-sm-2">
+        <input class="form-control" ng-model="$ctrl.category.rangeMax">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-default" ng-click="$ctrl.save()">Save</button>
+        <button class="btn" ui-sref="categories">Cancel</button>
+        <button class="btn" ng-if="!$ctrl.isNew()" ng-click="$ctrl.delete()">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>
