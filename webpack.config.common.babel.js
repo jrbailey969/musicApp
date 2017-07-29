@@ -23,6 +23,9 @@ module.exports = new WebpackConfig().merge({
         test: /\.scss$/,
         loader: 'style-loader!css-loader?sourceMap!sass-loader?sourceMap&sourceComments'
     }, {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?sourceMap'
+    }, {
         test: /\.(eot|woff|woff2|ttf|png|svg|jpg)$/,
         loader: 'url-loader?limit=300'
     }, {

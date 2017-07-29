@@ -3,6 +3,8 @@ import artistFormHtml from './artist-form.component.html';
 let artistFormComponent = {
   bindings: {
       'artistId': '<',
+      'categories': '<',
+      'categoryTypeInfo': '<'
   },
   template: artistFormHtml,
   controller: function ($state, artistService) {
@@ -21,6 +23,16 @@ let artistFormComponent = {
             });
         }
     }
+
+    vm.updateClassifications = function (categoryId, classifications) {
+        vm.artist.classifications
+            .filter((c) => c.classificationCategoryId === categoryId)
+            .forEach((c) => {
+                vm.artist.classifications.splice(vm.artist.classifications.indexOf(c), 1);
+            })
+
+        vm.artist.classifications.push(...classifications);
+    };
 
     vm.save = function() {
         let promise;

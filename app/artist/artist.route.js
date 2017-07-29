@@ -12,7 +12,15 @@ function artistRoutes($stateProvider, $urlRouterProvider) {
     .state('artists.addArtist', {
       url: '/artist/add',
       component: 'artistForm',
-      requireADLogin: true
+      requireADLogin: true,
+      resolve: {
+        categories: function (categoryService) {
+          return categoryService.getList();
+        },
+        categoryTypeInfo: function (categoryService) {
+          return categoryService.getCategoryTypeInfo();
+        }
+      }
     })
     .state('artists.artist', {
       url: '/:id',
@@ -21,6 +29,12 @@ function artistRoutes($stateProvider, $urlRouterProvider) {
       resolve: {
         artistId: function ($stateParams) {
           return $stateParams.id;
+        },
+        categories: function (categoryService) {
+          return categoryService.getList();
+        },
+        categoryTypeInfo: function (categoryService) {
+          return categoryService.getCategoryTypeInfo();
         }
       }
     })

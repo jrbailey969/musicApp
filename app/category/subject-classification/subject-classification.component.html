@@ -1,0 +1,19 @@
+
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">{{$ctrl.category.name}}</label>
+  <div class="col-sm-8" ng-if="$ctrl.category.classificationCategoryTypeId === $ctrl.categoryTypeInfo.RANGE">
+     <rzslider 
+        rz-slider-model="$ctrl.classifications[0].rangeValue"
+        rz-slider-options="$ctrl.sliderOptions">
+    </rzslider> 
+  </div>
+  <div class="col-sm-10" ng-if="$ctrl.category.classificationCategoryTypeId === $ctrl.categoryTypeInfo.TAG">
+    <tags-input 
+      ng-model="$ctrl.classifications" 
+      display-property="name"
+      on-tag-added="$ctrl.updated()"
+      on-tag-removed="$ctrl.updated()">
+      <auto-complete source="$ctrl.loadTags($query)" min-length="1" select-first-match="true"></auto-complete>
+    </tags-input>
+  </div>
+</div>

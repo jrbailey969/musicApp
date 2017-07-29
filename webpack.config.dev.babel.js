@@ -21,7 +21,7 @@ module.exports = new WebpackConfig().extend('./webpack.config.common.babel.js').
     devServer: {
     port: 9000,
     historyApiFallback: {
-      index: 'index.html'
+      index: '/'
     }
   }
 });
