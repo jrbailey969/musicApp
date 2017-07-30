@@ -1,4 +1,5 @@
 import subjectClassificationHtml from './subject-classification.component.html';
+import './subject-classification.component.scss';
 
 let subjectClassificationComponent = {
   bindings: {
@@ -22,6 +23,10 @@ let subjectClassificationComponent = {
     }
 
     vm.$onChanges = function (changesObj) {
+        if (!vm.classifications) {
+            vm.classifications = [];
+        }
+        
         if (vm.subject && vm.category) {
             vm.subject.classifications = vm.subject.classifications || [];
             vm.classifications = vm.subject.classifications
@@ -36,19 +41,21 @@ let subjectClassificationComponent = {
                         rangeValue: c.rangeValue
                     }
                 });
+        }
 
+        if (vm.category) {
             if (vm.category.classificationCategoryTypeId === vm.categoryTypeInfo.RANGE &&
                 vm.classifications.length === 0) {
                     vm.classifications.push({ rangeValue: vm.category.rangeMin });
             }
-
+            
             vm.sliderOptions = {
                 floor: vm.category.rangeMin,
                 ceil: vm.category.rangeMax,
                 minLimit: vm.category.rangeMin,
                 maxLimit: vm.category.rangeMax,
                 onChange: vm.updated
-            };
+            };            
         }
     }
 

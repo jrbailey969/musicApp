@@ -8,6 +8,19 @@ export class ArtistService {
         this.artists = ARTISTS.slice(0);
         this.resourceUrl = API_BASE_URL + '/api/artist'; // Constant defined in webpack config files.
     }
+
+    search(criteria) {
+        return this.$http({
+            method: 'GET',
+            url: this.resourceUrl + '/search',
+            params: { criteria: JSON.stringify(criteria) }
+        }).then(function successCallback(response) {
+            return response.data;
+        }, this._errorCallback.bind(this));
+        //return angular.copy(this.artists);
+    }
+
+    
     getList() {
         return this.$http({
             method: 'GET',

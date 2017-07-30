@@ -1,0 +1,18 @@
+<div class=" groove-form panel panel-default">
+  <form class="panel-body">
+    <div class="row">
+      <div class="col-sm-8">
+        <subject-classification 
+          ng-repeat="category in $ctrl.categories" 
+          category="category" 
+          category-type-info="$ctrl.categoryTypeInfo"
+          on-update="$ctrl.updateClassifications(categoryId, classifications)"></subject-classification>
+        <div class="form-group row">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default" ng-click="$ctrl.match()">Match</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

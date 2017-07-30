@@ -6,6 +6,7 @@ import 'ng-ui-router-state-events';
 import bootstraploader from 'bootstrap-loader'; 
 import artist from './artist';
 import category from './category';
+import groove from './groove';
 
 require('./main.scss');
 
@@ -13,9 +14,9 @@ let app = angular.module('app', [
   uirouter,
   'AdalAngular',
   'ui.router.state.events',
-  // 'example',
   'artist',
-  'category'
+  'category',
+  'groove'
 ]);
 
 app.config(['$locationProvider', function($locationProvider) {
