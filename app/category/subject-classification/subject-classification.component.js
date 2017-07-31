@@ -47,6 +47,7 @@ let subjectClassificationComponent = {
             if (vm.category.classificationCategoryTypeId === vm.categoryTypeInfo.RANGE &&
                 vm.classifications.length === 0) {
                     vm.classifications.push({ rangeValue: vm.category.rangeMin });
+                    vm.updated();
             }
             
             vm.sliderOptions = {

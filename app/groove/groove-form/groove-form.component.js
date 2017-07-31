@@ -13,7 +13,21 @@ let grooveFormComponent = {
         if (!vm.classifications) {
             vm.classifications = [];
         }
+
+        if (!vm.selectedCategories) {
+            vm.selectedCategories = [];
+        }
     }
+
+    vm.getCategoryOptions = () => {
+        return vm.categories.filter((c) => vm.selectedCategories.find((sc) => sc === c) === undefined);
+    }
+
+    vm.selectCategory = () => {
+        if (vm.selectedCategory) {
+            vm.selectedCategories.push(vm.selectedCategory);
+        }
+    };
 
     vm.updateClassifications = function (categoryId, classifications) {
         vm.classifications
@@ -27,8 +41,14 @@ let grooveFormComponent = {
 
     vm.match = function() {
         artistService.search({ classifications: vm.classifications }).then((result) => {
-            vm.arists = result;
+            vm.artists = result;
         });
+    }
+
+    vm.clear = () => {
+        vm.selectedCategories = [];
+        vm.classifications = [];
+        vm.artists = undefined;
     }
   }
 }

@@ -1,18 +1,38 @@
 <div class=" groove-form panel panel-default">
   <form class="panel-body">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-offset-2 col-sm-10">
+        <select 
+          class="form-control" 
+          ng-model="$ctrl.selectedCategory" 
+          ng-options="category as category.name for category in $ctrl.getCategoryOptions()"
+          ng-change="$ctrl.selectCategory()">
+          <option value="">- Select category -</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
         <subject-classification 
-          ng-repeat="category in $ctrl.categories" 
+          ng-repeat="category in $ctrl.selectedCategories" 
           category="category" 
           category-type-info="$ctrl.categoryTypeInfo"
           on-update="$ctrl.updateClassifications(categoryId, classifications)"></subject-classification>
         <div class="form-group row">
           <div class="col-sm-offset-2 col-sm-10">
             <button class="btn btn-default" ng-click="$ctrl.match()">Match</button>
+            <button class="btn" ng-click="$ctrl.clear()">Clear</button>
           </div>
         </div>
       </div>
+    </div>
+    <div class="row" ng-if="$ctrl.artists">
+      <groove-list artists="$ctrl.artists"></groove-list>
     </div>
   </form>
 </div>
